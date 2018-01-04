@@ -29,6 +29,6 @@ app.get('/download', (req, res, next) => {
 });
 
 // Listen to outside world
-app.listen(process.env.PORT, function() {
+app.listen(8080, function() {
 	console.log(`express: listening on localhost:${process.env.PORT}`);
 });

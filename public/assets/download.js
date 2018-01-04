@@ -73,18 +73,23 @@ const App = React.createClass({ // eslint-disable-line
 		const urlHeader = 'data:text/csv;charset=utf-8,';
 		
 		const csvHeader = [
-			'Track',
 			'Artist',
+			'Track',
 			'Album',
-			'Date Added'
+			'Date Added',
+      'Album Artist',
+      'Duration'
 		];
 		
+    console.dir(this.state.tracks, {depth: null});
 		const tracks = this.state.tracks.map(item => {
 			return [
-				'"' + item.track.name + '"',
 				'"' + item.track.artists.map(a => a.name).join(', ') + '"',
+				'"' + item.track.name + '"',
 				'"' + item.track.album.name + '"',
-				new Date(item.added_at),
+				'"' + new Date(item.added_at) + '"',
+        '"' + item.track.album.artists.map(a => a.name).join(', ') + '"',
+        ''+Math.floor(item.track.duration_ms / 1000)
 			];
 		});
 		
